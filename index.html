@@ -23,7 +23,6 @@
             display: none;
         }
 
-
         .page.active {
             display: block;
         }
@@ -772,12 +771,14 @@
             <ul class="nav-menu">
                 <li><a onclick="showPage('home')" id="nav-home">HOME</a></li>
                 <li><a onclick="showPage('sobre')" id="nav-sobre">SOBRE NÓS</a></li>
-                <li><a onclick="showPage('eventos')" id="nav-eventos">EVENTOS</a></li>
+                <li><a onclick="history.pushState({ page: 'eventos' }, '', '/events');
+showPage('eventos');" id="nav-eventos">EVENTOS</a></li>
                 <li><a onclick="showPage('recursos')" id="nav-recursos">MEMBER RESOURCES</a></li>
             </ul>
         </nav>
     </header>
 
+    
     <!-- Home Page -->
     <div id="home" class="main-content">
         <!-- Hero Section -->
@@ -1138,6 +1139,7 @@
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
+            history.pushState({ page: 'home' }, '', '/home');
             showPage('home');
             
             // Add enter key support for password input
