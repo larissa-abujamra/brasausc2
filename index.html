@@ -771,8 +771,7 @@
             <ul class="nav-menu">
                 <li><a onclick="showPage('home')" id="nav-home">HOME</a></li>
                 <li><a onclick="showPage('sobre')" id="nav-sobre">SOBRE NÓS</a></li>
-                <li><a onclick="history.pushState({ page: 'eventos' }, '', '/events');
-showPage('eventos');" id="nav-eventos">EVENTOS</a></li>
+                <li><a onclick="showPage('eventos')" id="nav-eventos">EVENTOS</a></li>
                 <li><a onclick="showPage('recursos')" id="nav-recursos">MEMBER RESOURCES</a></li>
             </ul>
         </nav>
@@ -1086,120 +1085,96 @@ showPage('eventos');" id="nav-eventos">EVENTOS</a></li>
     </div>
 
     <script>
-        function showPage(pageId) {
+        const routes = {
+            home: '/',
+            eventos: '/events',
+            sobre: '/sobre',
+            recursos: '/resources'
+        };
+        
+        function showPage(pageId, push = true) {
             if (pageId === 'home') {
-                // Show main content, hide all other pages
                 document.querySelector('.main-content').classList.remove('hidden');
-                const pages = document.querySelectorAll('.page');
-                pages.forEach(page => {
-                    page.classList.remove('active');
-                });
+                document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             } else {
-                // Hide main content, show selected page
                 document.querySelector('.main-content').classList.add('hidden');
-                const pages = document.querySelectorAll('.page');
-                pages.forEach(page => {
-                    page.classList.remove('active');
-                });
-                
-                const targetPage = document.getElementById(pageId);
-                if (targetPage) {
-                    targetPage.classList.add('active');
-                }
+                document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        
+                const target = document.getElementById(pageId);
+                if (target) target.classList.add('active');
             }
-
-            // Remove active class from all nav links
-            const navLinks = document.querySelectorAll('.nav-menu a');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-
-            // Add active class to corresponding nav link
-            const targetNavLink = document.getElementById('nav-' + pageId);
-            if (targetNavLink) {
-                targetNavLink.classList.add('active');
+        
+            // Nav active state
+            document.querySelectorAll('.nav-menu a').forEach(link =>
+                link.classList.remove('active')
+            );
+            const navLink = document.getElementById('nav-' + pageId);
+            if (navLink) navLink.classList.add('active');
+        
+            // URL update
+            if (push) {
+                const url = routes[pageId] || '/';
+                history.pushState({ page: pageId }, '', url);
             }
-
-            // Scroll to top
+        
             window.scrollTo(0, 0);
-
-            // Re-trigger animations for event items when eventos page is shown
-            if (pageId === 'eventos') {
-                setTimeout(() => {
-                    const eventItems = document.querySelectorAll('#eventos .event-item');
-                    eventItems.forEach((item, index) => {
-                        item.style.animation = 'none';
-                        item.offsetHeight; // Trigger reflow
-                        item.style.animation = `fadeInUp 0.6s ease forwards`;
-                        item.style.animationDelay = `${(index + 1) * 0.1}s`;
-                    });
-                }, 100);
-            }
         }
-
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            history.pushState({ page: 'home' }, '', '/home');
-            showPage('home');
-            
-            // Add enter key support for password input
-            document.getElementById('passwordInput').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    checkPassword();
-                }
-            });
+        
+        // Handle browser back / forward
+        window.addEventListener('popstate', (event) => {
+            const page = event.state?.page || 'home';
+            showPage(page, false);
         });
-
-        // Password functions
+        
+        // Handle direct URL access (refresh, deep link)
+        document.addEventListener('DOMContentLoaded', () => {
+            const path = window.location.pathname;
+            const pageFromPath =
+                Object.keys(routes).find(key => routes[key] === path) || 'home';
+        
+            showPage(pageFromPath, false);
+        
+            // Password enter key (NOW SAFE)
+            const passwordInput = document.getElementById('passwordInput');
+            if (passwordInput) {
+                passwordInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') checkPassword();
+                });
+            }
+        });
+        
+        // Password logic (unchanged)
         function checkPassword() {
             const input = document.getElementById('passwordInput');
             const errorMessage = document.getElementById('errorMessage');
             const passwordPortal = document.getElementById('passwordPortal');
             const memberPortal = document.getElementById('memberPortal');
-            
+        
             if (input.value === '002520') {
-                // Correct password
                 passwordPortal.style.display = 'none';
                 memberPortal.classList.add('active');
                 errorMessage.style.display = 'none';
             } else {
-                // Wrong password
                 errorMessage.style.display = 'block';
                 input.value = '';
                 input.style.borderColor = '#dc3545';
-                
-                // Reset border color after 2 seconds
                 setTimeout(() => {
                     input.style.borderColor = '#e9ecef';
                 }, 2000);
             }
         }
-
+        
         function logout() {
-            const passwordPortal = document.getElementById('passwordPortal');
-            const memberPortal = document.getElementById('memberPortal');
-            const passwordInput = document.getElementById('passwordInput');
-            const errorMessage = document.getElementById('errorMessage');
-            
-            // Reset everything
-            passwordPortal.style.display = 'block';
-            memberPortal.classList.remove('active');
-            passwordInput.value = '';
-            errorMessage.style.display = 'none';
-            passwordInput.style.borderColor = '#e9ecef';
+            document.getElementById('passwordPortal').style.display = 'block';
+            document.getElementById('memberPortal').classList.remove('active');
+            document.getElementById('passwordInput').value = '';
+            document.getElementById('errorMessage').style.display = 'none';
         }
-
+        
         function downloadResource(resourceType) {
-            // Placeholder function for resource downloads
-            const messages = {
-                'alumni': 'Link para a planilha da Alumni Network seria disponibilizado aqui.',
-                'calendar': 'Calendário de eventos seria aberto aqui.',
-                'guide': 'Download do Guia de Recursos USC iniciaria aqui.',
-                'directory': 'Diretório de membros seria acessado aqui.'
-            };
-            
-            alert(messages[resourceType] || 'Recurso não encontrado.');
+            alert('Recurso em breve ✨');
         }
-    </script>
+        </script>
+        
 </body>
 </html>
