@@ -412,7 +412,6 @@
             min-width: 100px;
         }
 
-
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-menu {
@@ -441,7 +440,6 @@
                 grid-template-columns: 1fr;
             }
 
-           
             .event-item {
                 flex-direction: column;
                 gap: 20px;
@@ -466,6 +464,10 @@
                 font-size: 1.7rem;
             }
 
+            .tab-button {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -511,7 +513,6 @@
         .event-item:nth-child(4) { animation-delay: 0.4s; }
         .event-item:nth-child(5) { animation-delay: 0.5s; }
         .event-item:nth-child(6) { animation-delay: 0.6s; }
-
 
         @keyframes fadeInUp {
             to {
@@ -1170,7 +1171,6 @@
             </div>
         </section>
     </div>
-    </div>
 
     <!-- Member Resources Page -->
     <div id="recursos" class="page">
@@ -1289,8 +1289,9 @@
                 });
             }
         });
-         // Tab switching function
-         function switchTab(tabName) {
+
+        // Tab switching function
+        function switchTab(tabName) {
             // Remove active class from all tabs
             document.querySelectorAll('.tab-button').forEach(btn => {
                 btn.classList.remove('active');
@@ -1299,13 +1300,21 @@
                 content.classList.remove('active');
             });
 
-            // Add active class to selected tab
-            event.target.classList.add('active');
+            // Add active class to the clicked button
+            // Find which button was clicked by checking which one calls this tab
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(btn => {
+                const onclickAttr = btn.getAttribute('onclick');
+                if (onclickAttr && onclickAttr.includes(`'${tabName}'`)) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Show the selected tab content
             document.getElementById(tabName + '-tab').classList.add('active');
         }
         
-        
-        // Password logic (unchanged)
+        // Password logic
         function checkPassword() {
             const input = document.getElementById('passwordInput');
             const errorMessage = document.getElementById('errorMessage');
@@ -1336,7 +1345,7 @@
         function downloadResource(resourceType) {
             alert('Recurso em breve ✨');
         }
-        </script>
+    </script>
         
 </body>
 </html>
