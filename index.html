@@ -90,7 +90,7 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #f9fafb 0%, #e9ecef 100%);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             padding: 80px 0;
             position: relative;
             overflow: hidden;
@@ -197,6 +197,100 @@
         .cta-button:hover {
             background: #1e3a6f;
             transform: translateY(-2px);
+        }
+
+        /* Photo Carousel Section */
+        .photo-carousel-section {
+            background: white;
+            padding: 80px 0;
+            overflow: hidden;
+        }
+
+        .photo-carousel-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .photo-carousel-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c5aa0;
+            margin-bottom: 50px;
+            font-weight: bold;
+        }
+
+        .photo-carousel-wrapper {
+            overflow: hidden;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .photo-carousel-track {
+            display: flex;
+            gap: 25px;
+            animation: photoScroll 40s linear infinite;
+            width: max-content;
+        }
+
+        .photo-carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        .carousel-photo {
+            width: 350px;
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #adb5bd;
+            font-size: 3rem;
+        }
+
+        .carousel-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        @keyframes photoScroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .photo-carousel-section {
+                padding: 60px 0;
+            }
+
+            .photo-carousel-section h2 {
+                font-size: 2rem;
+                margin-bottom: 35px;
+            }
+
+            .carousel-photo {
+                width: 280px;
+                height: 200px;
+            }
+
+            .photo-carousel-track {
+                gap: 20px;
+            }
         }
 
         /* Services Section */
@@ -792,7 +886,7 @@
             }
 
             .department-title {
-                font-size: 1.2rem;
+                font-size: 1.6rem;
             }
 
             .department-section {
@@ -872,6 +966,116 @@
             }
         }
 
+        /* Member Testimonials Section */
+        .testimonials-section {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .testimonials-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c5aa0;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .testimonials-section .subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #6c757d;
+            margin-bottom: 50px;
+            line-height: 1.6;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .testimonial-card {
+            background: #f8f9fa;
+            padding: 35px 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 4rem;
+            color: #2c5aa0;
+            opacity: 0.2;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #5488bc 0%, #dee2e6 100%);
+            overflow: hidden;
+            border: 3px solid white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+
+        .testimonial-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-info {
+            flex: 1;
+        }
+
+        .testimonial-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2c5aa0;
+            margin-bottom: 3px;
+        }
+
+        .testimonial-years {
+            font-size: 0.85rem;
+            color: #6c757d;
+            font-weight: 500;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            color: #495057;
+            line-height: 1.7;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
         @media (max-width: 768px) {
             .alumni-section h2 {
                 font-size: 2rem;
@@ -886,6 +1090,19 @@
             
             .carousel-track {
                 gap: 40px;
+            }
+
+            .testimonials-section h2 {
+                font-size: 2rem;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .testimonial-card {
+                padding: 30px 25px;
             }
         }
     </style>
@@ -931,6 +1148,89 @@
             </div>
         </section>
 
+        <!-- Photo Carousel Section -->
+        <section class="photo-carousel-section">
+            <div class="photo-carousel-container">
+                <div class="photo-carousel-wrapper">
+                    <div class="photo-carousel-track">
+        
+                        <div class="carousel-photo">
+                            <img src="natal.png" alt="BRASA Event">
+  
+                        </div>
+                        <div class="carousel-photo">
+                            <img src="prebaile.png" alt="BRASA Event">
+   
+                        </div>
+                        <div class="carousel-photo">
+                            <img src="churras.png" alt="BRASA Event">
+        
+                        </div>
+                        <div class="carousel-photo">
+                            <img src="retiro.png" alt="BRASA Event">
+
+                        </div>
+                        <div class="carousel-photo">
+                            <img src="fogo.png" alt="BRASA Event">
+            
+                        </div>
+                        <div class="carousel-photo">
+                            <img src="tailgate.png" alt="BRASA Event">
+            
+                        </div>
+                        <div class="carousel-photo">
+                            <img src="wine.png" alt="BRASA Event">
+               
+                        </div>
+                        <div class="carousel-photo">
+                            <img src="tailgate.jpg" alt="BRASA Event">
+                        </div>
+                        <div class="carousel-photo">
+                            <img src="meninos.png" alt="BRASA Event">
+        
+                        </div>
+                        <div class="carousel-photo">
+                            <img src="natal.png" alt="BRASA Event">
+  
+                        </div>
+                        <div class="carousel-photo">
+                            <img src="prebaile.png" alt="BRASA Event">
+   
+                        </div>
+                        <div class="carousel-photo">
+                            <img src="churras.png" alt="BRASA Event">
+        
+                        </div>
+                        <div class="carousel-photo">
+                            <img src="retiro.png" alt="BRASA Event">
+
+                        </div>
+                        <div class="carousel-photo">
+                            <img src="fogo.png" alt="BRASA Event">
+            
+                        </div>
+                        <div class="carousel-photo">
+                            <img src="tailgate.png" alt="BRASA Event">
+            
+                        </div>
+                        <div class="carousel-photo">
+                            <img src="wine.png" alt="BRASA Event">
+               
+                        </div>
+                        <div class="carousel-photo">
+                            <img src="tailgate.jpg" alt="BRASA Event">
+                        </div>
+                        <div class="carousel-photo">
+                            <img src="meninos.png" alt="BRASA Event">
+        
+                        </div>
+                        
+                     
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Services Section -->
         <section class="services">
             <div class="services-container">
@@ -971,7 +1271,7 @@
                             <img src="amazon.png" alt="Amazon">
                         </div>
                         <div class="company-logo">
-                            <img src="citi.png" alt="Citi Bank">
+                            <img src="Citi.png" alt="Citi Bank">
                         </div>
                         <div class="company-logo">
                             <img src="brex.png" alt="Brex">
@@ -1005,11 +1305,70 @@
                 </div>
             </div>
         </section>
+
+        <!-- Member Testimonials Section -->
+        <section class="testimonials-section">
+            <div class="testimonials-container">
+                <h2>Member Testimonials</h2>
+                <p class="subtitle">Veja o que nossos membros têm a dizer sobre a experiência na BRASA USC</p>
+                
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-photo">
+                                <img src="biel.png" alt="Member">
+                                <!-- Replace with actual photo -->
+                            </div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-name">Gabriel Araújo</div>
+                                <div class="testimonial-years">2021-2025</div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">
+                            Fazer parte da BRASA foi muito bom, pois conheci e me aproximei de vários amigos, os retiros da BRASA sempre vão ser lembrados e a “família” que de lá nasceu shaped meu trajeto na USC. Tive a oportunidade de ser co-president, ajudando a organizar os eventos e conhecer mais pessoas.                        </p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-photo">
+                                <img src="giu.png" alt="Member">
+                                <!-- Replace with actual photo -->
+                            </div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-name">Giulia Café</div>
+                                <div class="testimonial-years">2022-2026</div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">
+                            A brasa foi essencial para eu me manter informada sobre as melhores oportunidades no Brasil! 
+                            Fiz meu primeiro summer internship logo depois do meu freshman year graças às oportunidades que a comunidade compartilhou. Seja para desenvolvimento profissional ou diversão, sempre conto com a brasa para me manter envolvida na cultura e no mercado brasileiro!                        </p>
+                    </div>
+
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-photo">
+                                <img src="testimonial3.png" alt="Member">
+                                <!-- Replace with actual photo -->
+                            </div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-name">Nome do Membro</div>
+                                <div class="testimonial-years">2024-2025</div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fazer parte da BRASA me deu um verdadeiro "home away from home" aqui em Los Angeles.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
 
-    <!-- Eventos Page -->
-    <div id="eventos" class="page">
+     <!-- Eventos Page -->
+     <div id="eventos" class="page">
         <section class="eventos-hero">
             <div class="eventos-hero-container">
                 <h1>Eventos</h1>
@@ -1200,13 +1559,15 @@
         <section class="eventos-hero">
             <div class="eventos-hero-container">
                 <h1>Sobre Nós</h1>
-                <p>Meet the Board 2025-2026</p>
+                <p>Conheça a BRASA USC</p>
             </div>
         </section>
         
         <section class="eventos-content">
             <div class="eventos-container">
                 <div class="board-section">
+                    <h2>Meet the Board</h2>
+                    <p class="subtitle">2025-2026</p>
                     
                     <!-- Presidents Section -->
                     <div class="department-section">
