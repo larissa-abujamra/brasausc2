@@ -665,7 +665,6 @@
         /* Board Section Styles */
         .board-section {
             margin-top: 60px;
-            
         }
 
         .board-section h2 {
@@ -680,7 +679,36 @@
             text-align: center;
             font-size: 1.3rem;
             color: #6c757d;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
+        }
+
+        .department-section {
+            margin-bottom: 70px;
+        }
+
+        .department-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .department-title {
+            font-size: 2rem;
+            color: #2c5aa0;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .department-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #ffc107, #28a745);
         }
 
         .board-grid {
@@ -689,6 +717,11 @@
             gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        .presidents-grid {
+            grid-template-columns: repeat(2, minmax(250px, 350px));
+            justify-content: center;
         }
 
         .board-member {
@@ -743,6 +776,10 @@
                 grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
                 gap: 20px;
             }
+
+            .presidents-grid {
+                grid-template-columns: 1fr;
+            }
             
             .member-photo {
                 width: 120px;
@@ -752,6 +789,14 @@
             
             .board-section h2 {
                 font-size: 2rem;
+            }
+
+            .department-title {
+                font-size: 1.6rem;
+            }
+
+            .department-section {
+                margin-bottom: 50px;
             }
         }
         /* Alumni Placements Carousel */
@@ -1019,9 +1064,23 @@
                                 <h3>Evento CREBIT - Professional </h3>
                                 <p>Conheça os fundadores de uma fintech de transferência de câmbio</p>
                             </div>
-                            <div class="event-date">TBD</div>
+                            <div class="event-date">TBA</div>
                         </div>
                     </div>
+
+                    <div class="event-item">
+                        <div class="event-image">
+                            <img src="retiro.png" alt="Event"> 
+                        </div>
+                        <div class="event-details">
+                            <div class="event-info">
+                                <h3>Retiro da BRASA</h3>
+                                <p>A viagem mais esperada do ano!</p>
+                            </div>
+                            <div class="event-date">TBA</div>
+                        </div>
+                    </div>
+
                 </div>
 
                 <!-- fall 2025 tab -->
@@ -1136,7 +1195,7 @@
         </section>
     </div>
 
-    <!-- Sobre Page -->
+    !-- Sobre Page -->
     <div id="sobre" class="page">
         <section class="eventos-hero">
             <div class="eventos-hero-container">
@@ -1151,83 +1210,111 @@
                     <h2>Meet the Board</h2>
                     <p class="subtitle">2025-2026</p>
                     
-                    <div class="board-grid">
-                        <div class="board-member">
-                            <img src="nina.png" alt="nina" class="member-photo">
-                            <div class="member-name">Marina Hermann</div>
-                            <div class="member-position">Co-President</div>
+                    <!-- Presidents Section -->
+                    <div class="department-section">
+                        <h3 class="department-title">Presidents</h3>
+                        <div class="board-grid presidents-grid">
+                            <div class="board-member">
+                                <img src="nina.png" alt="nina" class="member-photo">
+                                <div class="member-name">Marina Hermann</div>
+                                <div class="member-position">Co-President</div>
+                            </div>
+                            
+                            <div class="board-member">
+                                <img src="quim.png" alt="quim" class="member-photo">
+                                <div class="member-name">Quim Camargo</div>
+                                <div class="member-position">Co-President</div>
+                            </div>
                         </div>
-                        
-                        <div class="board-member">
-                            <img src="quim.png" alt="quim" class="member-photo">
-                            <div class="member-name">Quim Camargo</div>
-                            <div class="member-position">Co-President</div>
-                        </div>
-                        
-                        <div class="board-member">
-                            <img src="bia.png" alt="Beatriz" class="member-photo">
-                            <div class="member-name">Beatriz Bogado</div>
-                            <div class="member-position">Social Director</div>
-                        </div>
-                        
-                        <div class="board-member">
-                            <img src="gui.png" alt="Gui" class="member-photo">
-                            <div class="member-name">Guilherme Regis</div>
-                            <div class="member-position">Social Manager</div>
-                        </div>
-                        
-                        <div class="board-member">
-                            <img src="dani.png" alt="Dani" class="member-photo">
-                            <div class="member-name">Danielle Tavares</div>
-                            <div class="member-position">Social Manager</div>
-                        </div>
+                    </div>
 
-                        <div class="board-member">
-                            <img src="bella.png" alt="Bella" class="member-photo">
-                            <div class="member-name">Bella Miller</div>
-                            <div class="member-position">Marketing Director </div>
+                    <!-- Social Section -->
+                    <div class="department-section">
+                        <h3 class="department-title">Social</h3>
+                        <div class="board-grid">
+                            <div class="board-member">
+                                <img src="bia.png" alt="Beatriz" class="member-photo">
+                                <div class="member-name">Beatriz Bogado</div>
+                                <div class="member-position">Social Director</div>
+                            </div>
+                            
+                            <div class="board-member">
+                                <img src="gui.png" alt="Gui" class="member-photo">
+                                <div class="member-name">Guilherme Regis</div>
+                                <div class="member-position">Social Manager</div>
+                            </div>
+                            
+                            <div class="board-member">
+                                <img src="dani.png" alt="Dani" class="member-photo">
+                                <div class="member-name">Danielle Tavares</div>
+                                <div class="member-position">Social Manager</div>
+                            </div>
                         </div>
-                        
-                        <div class="board-member">
-                            <img src="lari.png" alt="Lari" class="member-photo">
-                            <div class="member-name">Larissa Oliveira</div>
-                            <div class="member-position">Marketing Manager</div>
-                        </div>
+                    </div>
 
-                        <div class="board-member">
-                            <img src="guid.png" alt="GuiD" class="member-photo">
-                            <div class="member-name">Guilherme Dias</div>
-                            <div class="member-position">Marketing Manager</div>
-                        </div>
-                        
-                        <div class="board-member">
-                            <img src="mc.png" alt="MC" class="member-photo">
-                            <div class="member-name">Maria Clara Quiroga</div>
-                            <div class="member-position">Finance Director</div>
-                        </div>
-                        
-                        <div class="board-member">
-                            <img src="ranna.png" alt="Ranna" class="member-photo">
-                            <div class="member-name">Ranna Mehta</div>
-                            <div class="member-position">Finance Manager</div>
-                        </div>
+                    <!-- Marketing Section -->
+                    <div class="department-section">
+                        <h3 class="department-title">Marketing</h3>
+                        <div class="board-grid">
+                            <div class="board-member">
+                                <img src="bella.png" alt="Bella" class="member-photo">
+                                <div class="member-name">Bella Miller</div>
+                                <div class="member-position">Marketing Director</div>
+                            </div>
+                            
+                            <div class="board-member">
+                                <img src="lari.png" alt="Lari" class="member-photo">
+                                <div class="member-name">Larissa Oliveira</div>
+                                <div class="member-position">Marketing Manager</div>
+                            </div>
 
-                        <div class="board-member">
-                            <img src="enzo.png" alt="Enzo" class="member-photo">
-                            <div class="member-name">Enzo Ortega</div>
-                            <div class="member-position">Finance Manager</div>
+                            <div class="board-member">
+                                <img src="guid.png" alt="GuiD" class="member-photo">
+                                <div class="member-name">Guilherme Dias</div>
+                                <div class="member-position">Marketing Manager</div>
+                            </div>
                         </div>
-                        
-                        <div class="board-member">
-                            <img src="lucas.png" alt="Lucas" class="member-photo">
-                            <div class="member-name">Lucas Piovezan</div>
-                            <div class="member-position">Professional Director</div>
+                    </div>
+
+                    <!-- Finance Section -->
+                    <div class="department-section">
+                        <h3 class="department-title">Finance</h3>
+                        <div class="board-grid">
+                            <div class="board-member">
+                                <img src="mc.png" alt="MC" class="member-photo">
+                                <div class="member-name">Maria Clara Quiroga</div>
+                                <div class="member-position">Finance Director</div>
+                            </div>
+                            
+                            <div class="board-member">
+                                <img src="ranna.png" alt="Ranna" class="member-photo">
+                                <div class="member-name">Ranna Mehta</div>
+                                <div class="member-position">Finance Manager</div>
+                            </div>
+
+                            <div class="board-member">
+                                <img src="enzo.png" alt="Enzo" class="member-photo">
+                                <div class="member-name">Enzo Ortega</div>
+                                <div class="member-position">Finance Manager</div>
+                            </div>
                         </div>
-                        
-                        <div class="board-member">
-                            <img src="alice.png" alt="Alice" class="member-photo">
-                            <div class="member-name">Alice Marimon</div>
-                            <div class="member-position">Professional Manager</div>
+                    </div>
+
+                    <!-- Professional Section -->
+                    <div class="department-section">
+                        <h3 class="department-title">Professional</h3>
+                        <div class="board-grid">
+                            <div class="board-member">
+                                <img src="lucas.png" alt="Lucas" class="member-photo">
+                                <div class="member-name">Lucas Piovezan</div>
+                                <div class="member-position">Professional Director</div>
+                            </div>
+                            
+                            <div class="board-member">
+                                <img src="alice.png" alt="Alice" class="member-photo">
+                                <div class="member-name">Alice Marimon</div>
+                                <div class="member-position">Professional Manager</div>
+                            </div>
                         </div>
                     </div>
                 </div>
