@@ -924,13 +924,21 @@
             transform: translateY(-5px);
         }
 
+        .member-photo-link {
+            display: block;
+            margin: 0 auto 20px;
+            width: fit-content;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
         .member-photo {
             width:150px;
             height:150px;
             border-radius: 50%;
             background: linear-gradient(135deg, #5488bc 0%, #dee2e6 100%);
-            margin: 0 auto 20px;
-            display: flex;
+            margin: 0;
+            display: block;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
@@ -1003,6 +1011,9 @@
         #sobre .board-section {
             margin-top: 0;
         }
+        #sobre .board-section .department-section:first-child {
+            margin-top: 28px;
+        }
         #sobre .department-section {
             margin-bottom: 40px;
         }
@@ -1021,13 +1032,18 @@
         #sobre .board-grid {
             gap: 24px;
         }
+        #sobre .department-section:last-child .board-grid {
+            gap: 12px;
+        }
         #sobre .board-member {
             padding: 20px 8px;
+        }
+        #sobre .member-photo-link {
+            margin-bottom: 12px;
         }
         #sobre .member-photo {
             width: 130px;
             height: 130px;
-            margin-bottom: 12px;
         }
         #sobre .member-name {
             font-size: 1.1rem;
@@ -1053,10 +1069,12 @@
             #sobre .board-grid {
                 gap: 20px;
             }
+            #sobre .member-photo-link {
+                margin-bottom: 10px;
+            }
             #sobre .member-photo {
                 width: 110px;
                 height: 110px;
-                margin-bottom: 10px;
             }
         }
 
@@ -1437,12 +1455,12 @@
                         <h3>EVENTOS</h3>
                         <p>A área de Social é responsável por organizar eventos que fortalecem a união entre brasileiros e criam momentos de integração.</p>
                         <p>Alguns dos nossos eventos preferidos incluem: Tailgates, Mixers, Churrascos, o Retiro BRASA</p>
-                        <a onclick="showPage('eventos')" class="read-more" style="cursor: pointer;">Read More</a>
+                        <a onclick="showPage('eventos')" class="read-more" style="cursor: pointer;">Saíba mais</a>
                     </div>
                     <div class="service-card">
                         <h3>PROFISSIONAL</h3>
                         <p>Buscamos conectar nossos membros a oportunidades de desenvolvimento profissional por meio de parcerias com empresas, organizações e alumni. Promovemos relacionamentos marcantes e apoiamos o avanço das carreiras dos estudantes além do acadêmico</p>
-                        <a onclick="showPage('eventos')" class="read-more" style="cursor: pointer;">Read More</a>
+                       
                     </div>
                     <div class="service-card">
                         <h3>COMUNIDADE</h3>
@@ -1780,13 +1798,13 @@
                         <h3 class="department-title">Presidents</h3>
                         <div class="board-grid presidents-grid">
                             <div class="board-member">
-                                <img src="nina.png" alt="nina" class="member-photo">
+                                <a href="https://www.linkedin.com/in/marina-cardoso-hermann-493048218/" target="_blank" rel="noopener noreferrer" class="member-photo-link" title="View LinkedIn profile"><img src="nina.png" alt="nina" class="member-photo"></a>
                                 <div class="member-name">Marina Hermann</div>
                                 <div class="member-position">Co-President</div>
                             </div>
                             
                             <div class="board-member">
-                                <img src="quim.png" alt="quim" class="member-photo">
+                                <a href="https://www.linkedin.com/in/quim-camargo" target="_blank" rel="noopener noreferrer" class="member-photo-link" title="View LinkedIn profile"><img src="quim.png" alt="quim" class="member-photo"></a>
                                 <div class="member-name">Quim Camargo</div>
                                 <div class="member-position">Co-President</div>
                             </div>
@@ -1798,19 +1816,19 @@
                         <h3 class="department-title">Social</h3>
                         <div class="board-grid">
                             <div class="board-member">
-                                <img src="bia.png" alt="Beatriz" class="member-photo">
+                                <a href="https://www.linkedin.com/in/beatriz-martinho-bogado-6263b832b/" target="_blank" rel="noopener noreferrer" class="member-photo-link" title="View LinkedIn profile"><img src="bia.png" alt="Beatriz" class="member-photo"></a>
                                 <div class="member-name">Beatriz Bogado</div>
                                 <div class="member-position">Social Director</div>
                             </div>
                             
                             <div class="board-member">
-                                <img src="gui.png" alt="Gui" class="member-photo">
+                                <a href="https://www.linkedin.com/in/guilherme-nolasco-regis/" target="_blank" rel="noopener noreferrer" class="member-photo-link" title="View LinkedIn profile"><img src="gui.png" alt="Gui" class="member-photo"></a>
                                 <div class="member-name">Guilherme Regis</div>
                                 <div class="member-position">Social Manager</div>
                             </div>
                             
                             <div class="board-member">
-                                <img src="dani.png" alt="Dani" class="member-photo">
+                                <a href="https://www.linkedin.com/in/daniellecltavares/" target="_blank" rel="noopener noreferrer" class="member-photo-link" title="View LinkedIn profile"><img src="dani.png" alt="Dani" class="member-photo"></a>
                                 <div class="member-name">Danielle Tavares</div>
                                 <div class="member-position">Social Manager</div>
                             </div>
@@ -1822,19 +1840,19 @@
                         <h3 class="department-title">Marketing</h3>
                         <div class="board-grid">
                             <div class="board-member">
-                                <img src="bella.png" alt="Bella" class="member-photo">
+                                <a href="https://www.linkedin.com/in/bellamiller1/" target="_blank" rel="noopener noreferrer" class="member-photo-link" title="View LinkedIn profile"><img src="bella.png" alt="Bella" class="member-photo"></a>
                                 <div class="member-name">Bella Miller</div>
                                 <div class="member-position">Marketing Director</div>
                             </div>
                             
                             <div class="board-member">
-                                <img src="lari.png" alt="Lari" class="member-photo">
+                                <a href="https://www.linkedin.com/in/larissa-oliveira2005/" target="_blank" rel="noopener noreferrer" class="member-photo-link" title="View LinkedIn profile"><img src="lari.png" alt="Lari" class="member-photo"></a>
                                 <div class="member-name">Larissa Oliveira</div>
                                 <div class="member-position">Marketing Manager</div>
                             </div>
 
                             <div class="board-member">
-                                <img src="guid.png" alt="GuiD" class="member-photo">
+                                <a href="https://www.linkedin.com/in/guilherme-souza-dias-4701b8343/" target="_blank" rel="noopener noreferrer" class="member-photo-link" title="View LinkedIn profile"><img src="guid.png" alt="GuiD" class="member-photo"></a>
                                 <div class="member-name">Guilherme Dias</div>
                                 <div class="member-position">Marketing Manager</div>
                             </div>
@@ -1846,19 +1864,19 @@
                         <h3 class="department-title">Finance</h3>
                         <div class="board-grid">
                             <div class="board-member">
-                                <img src="mc.png" alt="MC" class="member-photo">
+                                <a href="https://www.linkedin.com/in/mariaclaraquiroga/" target="_blank" rel="noopener noreferrer" class="member-photo-link" title="View LinkedIn profile"><img src="mc.png" alt="MC" class="member-photo"></a>
                                 <div class="member-name">Maria Clara Quiroga</div>
                                 <div class="member-position">Finance Director</div>
                             </div>
                             
                             <div class="board-member">
-                                <img src="ranna.png" alt="Ranna" class="member-photo">
+                                <a href="https://www.linkedin.com/in/ranna-mehta-6ba794278/" target="_blank" rel="noopener noreferrer" class="member-photo-link" title="View LinkedIn profile"><img src="ranna.png" alt="Ranna" class="member-photo"></a>
                                 <div class="member-name">Ranna Mehta</div>
                                 <div class="member-position">Finance Manager</div>
                             </div>
 
                             <div class="board-member">
-                                <img src="enzo.png" alt="Enzo" class="member-photo">
+                                <a href="https://www.linkedin.com/in/enzo-b-ortega-1087681a5/" target="_blank" rel="noopener noreferrer" class="member-photo-link" title="View LinkedIn profile"><img src="enzo.png" alt="Enzo" class="member-photo"></a>
                                 <div class="member-name">Enzo Ortega</div>
                                 <div class="member-position">Finance Manager</div>
                             </div>
@@ -1870,13 +1888,13 @@
                         <h3 class="department-title">Professional</h3>
                         <div class="board-grid">
                             <div class="board-member">
-                                <img src="lucas.png" alt="Lucas" class="member-photo">
+                                <a href="https://www.linkedin.com/in/lucas-piovezan" target="_blank" rel="noopener noreferrer" class="member-photo-link" title="View LinkedIn profile"><img src="lucas.png" alt="Lucas" class="member-photo"></a>
                                 <div class="member-name">Lucas Piovezan</div>
                                 <div class="member-position">Professional Director</div>
                             </div>
                             
                             <div class="board-member">
-                                <img src="alice.png" alt="Alice" class="member-photo">
+                                <a href="https://www.linkedin.com/in/alice-marimon-8433a9385/" target="_blank" rel="noopener noreferrer" class="member-photo-link" title="View LinkedIn profile"><img src="alice.png" alt="Alice" class="member-photo"></a>
                                 <div class="member-name">Alice Marimon</div>
                                 <div class="member-position">Professional Manager</div>
                             </div>
