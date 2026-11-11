@@ -18,6 +18,7 @@
   --ease:cubic-bezier(.22,1,.36,1);
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:'Bricolage Grotesque',sans-serif;-webkit-font-smoothing:antialiased}
 a{color:var(--ink);text-decoration:none}
 a:hover{color:var(--blue)}
@@ -117,9 +118,8 @@ figcaption .mono{font-size:12px;color:var(--muted2)}
 
 /* Eventos */
 #eventos{gap:40px}
-.ev-title h1{margin:0;font-size:clamp(64px,10vw,140px);line-height:.88;font-weight:800;letter-spacing:-.04em}
+.ev-title h1{margin:0;font-size:clamp(56px,9vw,128px);line-height:.88;font-weight:800;letter-spacing:-.04em;text-transform:uppercase;color:var(--ink)}
 .ev-title{display:flex;flex-direction:column;gap:10px}
-.ev-title p{margin:0;font-family:'Instrument Serif',serif;font-style:italic;font-size:30px;color:var(--green)}
 .tabs{display:flex;padding:4px;border:1.5px solid var(--ink);border-radius:999px;background:var(--white)}
 .tabs button{border:0;cursor:pointer;font-family:inherit;font-size:15px;font-weight:600;padding:10px 22px;border-radius:999px;background:transparent;color:var(--ink)}
 .tabs button.active{background:var(--ink);color:#fff}
@@ -278,8 +278,7 @@ footer{margin-top:auto;background:var(--ink);color:var(--paper)}
   <main id="eventos" class="page subpage" data-screen-label="Eventos">
     <div class="section-head">
       <div class="ev-title">
-        <h1 class="outline">Eventos</h1>
-        <p>Fique por dentro!</p>
+        <h1>Eventos</h1>
       </div>
       <div class="tabs" role="tablist">
         <button data-tab="spring" class="active" role="tab">Spring 2026</button>
@@ -406,12 +405,8 @@ footer{margin-top:auto;background:var(--ink);color:var(--paper)}
     ['Professional', '#3f8a48', [['guid.png', 'Guilherme Dias', 'Professional Director', 'guilherme-souza-dias-4701b8343/'], ['mariacarolina.png', 'Maria Carolina Lima', 'Professional Manager', '']]]
   ];
 
-  var resources = [
-    { title: 'Alumni Network', desc: 'Conecte-se com ex-membros da BRASA USC que estão trabalhando em empresas líderes em diversas indústrias.', cta: 'Abrir planilha', href: 'https://docs.google.com/spreadsheets/d/16shKp7GHeT9M90vCSeSw_oGsgUPOamVLTSgGdv6hbE0/edit?usp=drivesdk', color: '#0b57b8' },
-    { title: 'Course Recommendations', desc: 'Sugestões de aulas e cursos na USC reunidas por membros — matérias, professores e experiências.', cta: 'Abrir planilha', href: 'https://docs.google.com/spreadsheets/d/1aVDYCoLZK9hk30tdbzV3i-IiEmsLxcNJtoK2l8GmU88/edit?gid=0#gid=0', color: '#3f8a48' },
-    { title: 'GE Recommendations', desc: 'Recomendações de General Education (GE) que a comunidade já curtiu.', cta: 'Abrir planilha', href: 'https://docs.google.com/spreadsheets/d/1l6N3ZyKcFC2L4BRKfrUwdVc2i6QunqJT9pj8-sFWMFw/edit?gid=0#gid=0', color: '#f6cd3d' },
-    { title: 'Diretório de Membros', desc: 'Lista atualizada dos membros ativos com contato e áreas de interesse para networking interno.', cta: 'Acessar lista', href: '#', color: '#0b57b8' }
-  ];
+  // Conteúdo dos Member Resources, criptografado com a senha (gerado por tools/encrypt-resources.mjs).
+  var RESOURCES_BLOB = {"iter":600000,"salt":"vVuopkta4P9Friep3xVRiQ==","iv":"UTwpgZ/BChG4kg6S","ct":"75PI1rH176xKJFMGT+uffAYTq4LV8OMl3SVzfzaV/CqR1rBgq5GQSkRPrI3EYk7siZAr52yQG/Hpp6XeQ8UJBw9gFIFd7Rk2T4fM52AjJvjNspSB31WRFMX+rOHRV2KLw8AaiJJN6gJstWz1vepvwJS+ckcgFjMnrpmQTeQryA0J5EBAiowtqtl/3m9Ln6fim+P0SDQoZSF3cYf68HyxRUGVM6NOiJWhFlgZaSelYljPCgWOnB5fOZikW1pMiMt4SgJy93JdyTYxQ3e2aQjnm3zC5SLKVyV4D7cmHiNcGeucX+A0/gWZnsFqnnaCilMxDxnEQ8NuJWQJxhInT6F2cDCLohVyNlT7rkDqBizytodNYsGvbhkV10uZ6rWxRXxIQFRBayJtHllJ3qTTYFiTD1GXu2HLps3s4p9q3IbXp/z7rUANyQTA6KRCl1LeveYt8Jl0nBQYRdyyipOwYWXZ1udJwTlH+rCRPWnsujheSx01D7tgZO3ZD3B+pNs+Qyr5//wR58uhgdb6yt5V+KTEw9xHev9NRh23DGr/Hg42/EcDxHlbGTVlJAzM88Bdt8TB+CLs/rkaxOGu6gIzLmJmT1b3WoSKToygfEyIvSfgMskuEjmcV7eP3KT5qXaFK2GHVbmMbzVDQot8wIRri3Zwx2P+zVInhoDOM59yEEjkGtpep9ekfkh4CfuxOw+KwVLb2p89y9F4bapynrOSD0I3yq8s10kdpkiBpZf1tKicDxQJEnCxWMRa78gEAEJl7uxDI0fMtE9u2hkdeOXNyvgiuhEizQ4pKHgQ29nx9YKF9JuTgPTDD8Z2Y69rF73zEziB737pguqzFaVYO/JaDGLzy2IfiFI6sji8EUmOulWZ6rCBYwf0/rnHOKMdjnPTdSKdHBAPOe+hH8yZfCCPl0tUudIlbe+UmaFm4fr7R6L76Ai3h3S+PiItrCpkBQ0yQL36eqks7fltrQgBO641CGFMRlLb+S72zk4iRghbZ68o1sASjUG1cVo5C8U8u/mHtacaS1J60bcv5qU8dIIX2Blm7piZXOg3f8WzGPNdCaPuXijv5JtSbzS8MUnx8c/pQw4tPlolMAQeSf8r4tYfMYDOtq+yabqC+kCyAFbxkJ9UHP8PI9jhhwwKtrDmqmHUqUt7cwbr+xuz4c0F5DPCyUMbYCeQ1P4WWADu5u4+Sob8kWwhhaEEBERsEmSt7jFMoYO2RWLqohHYuPA0qMAaHoOD0y0fmG568DOS/Nhr8kmCSS9tNxa4IZsGtlZTd2c+oRhgG2W3K81S2t7gs9ZiwEgEl67yp3lUVWGkbaPIPYuNo7bFyVHfsM5WSryvlbR1B3uERMwIeSBRosCoLw85dFJPoMELg7qMytJf+zpApKBYcl7Mg7hS9TgUB7BlWfqhmq8NMm9U8g=="};
 
   /* ---------- Render ---------- */
   $('strip').innerHTML = stripSrc.concat(stripSrc).map(function (src) {
@@ -472,12 +467,6 @@ footer{margin-top:auto;background:var(--ink);color:var(--paper)}
       }).join('') + '</div></div>';
   }).join('');
 
-  $('resources').innerHTML = resources.map(function (r) {
-    var ext = r.href !== '#' ? ' target="_blank" rel="noopener"' : '';
-    return '<div class="res"><div class="res-top"><span class="dot" style="background:' + r.color + '"></span>' +
-      '<h4>' + esc(r.title) + '</h4><p>' + esc(r.desc) + '</p></div>' +
-      '<a href="' + r.href + '"' + ext + '>' + esc(r.cta) + ' →</a></div>';
-  }).join('');
 
   /* ---------- Routing ---------- */
   var PAGES = ['home', 'sobre', 'eventos', 'recursos'];
@@ -504,29 +493,57 @@ footer{margin-top:auto;background:var(--ink);color:var(--paper)}
   });
 
   /* ---------- Member resources password ---------- */
-  var pw = $('pw'), pwError = $('pwError');
-  function setUnlocked(on) {
-    $('lock').hidden = on;
-    $('portal').hidden = !on;
+  // Os links só existem depois de descriptografados com a senha correta; nada fica no HTML antes disso.
+  var pw = $('pw'), pwError = $('pwError'), pwBtn = $('pwSubmit');
+  function b64(s) { return Uint8Array.from(atob(s), function (c) { return c.charCodeAt(0); }); }
+  function decryptResources(pass) {
+    var enc = new TextEncoder(), B = RESOURCES_BLOB, subtle = window.crypto && window.crypto.subtle;
+    if (!subtle) return Promise.reject(new Error('no-crypto'));
+    return subtle.importKey('raw', enc.encode(pass), 'PBKDF2', false, ['deriveKey'])
+      .then(function (base) {
+        return subtle.deriveKey({ name: 'PBKDF2', salt: b64(B.salt), iterations: B.iter, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+      })
+      .then(function (key) { return subtle.decrypt({ name: 'AES-GCM', iv: b64(B.iv) }, key, b64(B.ct)); })
+      .then(function (buf) { return JSON.parse(new TextDecoder().decode(buf)); });
+  }
+  function renderResources(list) {
+    $('resources').innerHTML = list.map(function (r) {
+      var safe = /^https:\/\//.test(r.href);
+      var attrs = safe ? ' href="' + esc(r.href) + '" target="_blank" rel="noopener"' : ' href="#"';
+      return '<div class="res"><div class="res-top"><span class="dot" style="background:' + esc(r.color) + '"></span>' +
+        '<h4>' + esc(r.title) + '</h4><p>' + esc(r.desc) + '</p></div>' +
+        '<a' + attrs + '>' + esc(r.cta) + ' →</a></div>';
+    }).join('');
+  }
+  function lock() {
+    $('resources').innerHTML = '';
+    $('portal').hidden = true; $('lock').hidden = false;
+    try { sessionStorage.removeItem('brasa-key'); } catch (e) {}
+  }
+  function unlockWith(pass, remember) {
+    return decryptResources(pass).then(function (list) {
+      renderResources(list);
+      $('lock').hidden = true; $('portal').hidden = false;
+      if (remember) { try { sessionStorage.setItem('brasa-key', pass); } catch (e) {} }
+    });
   }
   function submitPw() {
-    if (pw.value === '002520') {
-      setUnlocked(true);
-      try { sessionStorage.setItem('brasa-unlocked', '1'); } catch (e) {}
+    var pass = pw.value;
+    if (!pass) return;
+    pwBtn.disabled = true; pwBtn.textContent = 'Verificando…';
+    unlockWith(pass, true).then(function () {
       pwError.hidden = true; pw.classList.remove('err');
-    } else {
+    }, function () {
       pwError.hidden = false; pw.classList.add('err');
-    }
-    pw.value = '';
+    }).then(function () {
+      pw.value = ''; pwBtn.disabled = false; pwBtn.textContent = 'Entrar';
+    });
   }
-  $('pwSubmit').addEventListener('click', submitPw);
+  pwBtn.addEventListener('click', submitPw);
   pw.addEventListener('keydown', function (e) { if (e.key === 'Enter') submitPw(); });
   pw.addEventListener('input', function () { pwError.hidden = true; pw.classList.remove('err'); });
-  $('logout').addEventListener('click', function () {
-    setUnlocked(false);
-    try { sessionStorage.removeItem('brasa-unlocked'); } catch (e) {}
-  });
-  try { if (sessionStorage.getItem('brasa-unlocked') === '1') setUnlocked(true); } catch (e) {}
+  $('logout').addEventListener('click', lock);
+  try { sessionStorage.removeItem('brasa-unlocked'); var saved = sessionStorage.getItem('brasa-key'); if (saved) unlockWith(saved, false).catch(lock); } catch (e) {}
 
   /* ---------- Hero crowd animation ---------- */
   var crowdInst = null;
