@@ -301,8 +301,8 @@ footer{margin-top:auto;background:var(--ink);color:var(--paper)}
         <h1>Eventos</h1>
       </div>
       <div class="tabs" role="tablist">
-        <button data-tab="spring" class="active" role="tab">Spring 2026</button>
-        <button data-tab="fall" role="tab">Fall 2025</button>
+        <button data-tab="fall2026" class="active" role="tab">Fall 2026</button>
+        <button data-tab="spring" role="tab">Spring 2026</button>
       </div>
     </div>
     <div class="ev-list" id="events"></div>
@@ -402,16 +402,14 @@ footer{margin-top:auto;background:var(--ink);color:var(--paper)}
       ['17–19 APR', 'retiro.png', 'Retiro da BRASA', 'A viagem mais esperada do ano!'],
       ['20 APR', 'networking.jpg', 'Senior Networking Panel', 'Bate-papo com os incríveis seniors da BRASA']
     ],
-    fall: [
-      ['30 AUG', 'tailgate.png', 'Tailgate Home Opener', 'On-campus tailgate em parceria com La Onda'],
-      ['24 SEP', 'resume.png', 'Resume Review', 'Dicas de como melhorar/criar seu resume'],
-      ['14 OCT', 'jbs.png', 'Painel com Guilherme Cavalcanti', 'Bate-papo com o CFO Global da JBS'],
-      ['18 OCT', 'wine.png', 'Wine & Shackles', 'BRASA x La Onda'],
-      ['25 OCT', 'ucla.png', 'Mixer USC x UCLA x LMU', 'Encontro de estudantes brasileiros de LA'],
-      ['08 NOV', 'fogo.png', 'Jantar Fogo de Chão x CREBIT', 'Conhecemos os fundadores da CREBIT e os serviços que eles oferecem'],
-      ['12 NOV', 'painelam.png', 'Painel Amazon', 'Bate-papo com USC + BRASA Alumni que trabalham na Amazon'],
-      ['13 NOV', 'prebaile.png', 'Pré-game Baile Brasil', 'Esquenta pra primeira edição do Baile Brasil em LA'],
-      ['05 DEC', 'natal.png', 'Christmas Party BRASA x La Onda', 'A melhor festa natalina de Los Angeles']
+    fall2026: [
+      ['30 AUG', 'f26-churrasco-boasvindas.jpg', 'Churrasco de Boas-Vindas', 'O primeiro encontro do semestre pra receber os novos membros'],
+      ['12 SEP', 'f26-tailgate.jpg', 'Tailgate BRASA', 'Esquenta pro jogo dos Trojans com a família BRASA'],
+      ['16 SEP', 'f26-resume-workshop.jpg', 'Resume Workshop', 'Review e feedback no seu currículo com dicas de recruiting dos upperclassmen', 'top'],
+      ['22 SEP', 'f26-alphasights.jpg', 'Interview & Networking Best Practices', 'Workshop online em parceria com a AlphaSights', 'top'],
+      ['29 SEP', 'f26-btg.jpg', 'Bate-papo com o BTG', 'Oportunidades, programa de summer e Q&A com o RH do BTG Pactual', 'top'],
+      ['02 OCT', 'f26-churrasco-brasa.jpg', 'Churrasco BRASA', 'Mais um churrasco pra reunir a galera'],
+      ['07 NOV', 'f26-wine-night.jpg', 'Wine Night', 'Uma noite de vinhos com a BRASA']
     ]
   };
 
@@ -457,7 +455,7 @@ footer{margin-top:auto;background:var(--ink);color:var(--paper)}
       var c = COLORS[i % 3] === '#f6cd3d' ? '#0f1a2e' : COLORS[i % 3];
       return '<div class="ev-row">' +
         '<div class="ev-date" style="color:' + c + '">' + esc(e[0]) + '</div>' +
-        '<div class="polaroid" style="transform:rotate(' + ROTS[i % ROTS.length] + 'deg)"><img src="' + e[1] + '" alt="' + esc(e[2]) + '" loading="lazy"></div>' +
+        '<div class="polaroid" style="transform:rotate(' + ROTS[i % ROTS.length] + 'deg)"><img src="' + e[1] + '" alt="' + esc(e[2]) + '" loading="lazy"' + (e[4] ? ' style="object-position:' + e[4] + '"' : '') + '></div>' +
         '<div class="ev-text"><h3>' + esc(e[2]) + '</h3><p>' + esc(e[3]) + '</p></div></div>';
     }).join('');
     document.querySelectorAll('.tabs button').forEach(function (b) {
@@ -469,7 +467,7 @@ footer{margin-top:auto;background:var(--ink);color:var(--paper)}
   document.querySelectorAll('.tabs button').forEach(function (b) {
     b.addEventListener('click', function () { renderEvents(b.getAttribute('data-tab')); });
   });
-  renderEvents('spring');
+  renderEvents('fall2026');
 
   var k = 0;
   $('board').innerHTML = board.map(function (d) {
