@@ -100,8 +100,8 @@ header{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1p
 .testi h2{margin:0;font-size:clamp(44px,6vw,80px);line-height:.95;font-weight:800;letter-spacing:-.04em}
 .testi-head{display:flex;flex-direction:column;gap:12px;max-width:720px}
 .testi-head p{margin:0;font-size:18px;line-height:1.5;color:var(--muted)}
-.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;align-items:start}
-figure{margin:0;background:var(--white);border:1.5px solid var(--ink);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:24px}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;align-items:stretch}
+figure{margin:0;background:var(--white);border:1.5px solid var(--ink);border-radius:20px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:24px}
 blockquote{margin:0;font-family:'Instrument Serif',serif;font-size:23px;line-height:1.35;text-wrap:pretty}
 figcaption{display:flex;align-items:center;gap:14px}
 figcaption img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:1.5px solid var(--ink)}
@@ -146,6 +146,7 @@ figcaption .mono{font-size:12px;color:var(--muted2)}
 .member{display:flex;flex-direction:column;gap:10px;color:var(--ink)}
 .member .pol{background:#fff;padding:8px 8px 0;border:1.5px solid var(--ink);transition:transform .4s var(--ease)}
 .member .pol img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover}
+.member .pol .ph{width:100%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;background:var(--paper);color:var(--muted2);font-weight:800;font-size:44px;letter-spacing:-.02em}
 .member .pol::after{content:"";display:block;height:22px}
 .member:hover .pol{transform:rotate(0deg) translateY(-4px)!important}
 .member-info{display:flex;flex-direction:column;gap:2px;padding-top:4px}
@@ -256,7 +257,7 @@ footer{margin-top:auto;background:var(--ink);color:var(--paper)}
 
     <section class="container testi">
       <div class="testi-head">
-        <h2>A <span class="serif-it" style="color:var(--blue)">família</span> fala.</h2>
+        <h2>Depoimentos</h2>
         <p>Veja o que nossos membros têm a dizer sobre a experiência na BRASA USC.</p>
       </div>
       <div class="testi-grid" id="testimonials"></div>
@@ -292,7 +293,7 @@ footer{margin-top:auto;background:var(--ink);color:var(--paper)}
   <main id="sobre" class="page subpage" data-screen-label="Sobre Nós">
     <div class="page-title">
       <h1>Meet the <span class="serif-it" style="color:var(--blue)">Board</span></h1>
-      <p class="mono">Fall 2025 – Spring 2026</p>
+      <p class="mono">Fall 2026 – Spring 2027</p>
     </div>
     <div id="board" style="display:flex;flex-direction:column;gap:56px"></div>
   </main>
@@ -396,12 +397,13 @@ footer{margin-top:auto;background:var(--ink);color:var(--paper)}
   };
 
   var LI = 'https://www.linkedin.com/in/';
+  // [foto, nome, cargo, slug do LinkedIn] — foto ou slug vazios ('') mostram placeholder / sem link
   var board = [
-    ['Presidents', '#0b57b8', [['nina.png', 'Marina Hermann', 'Co-President', 'marina-cardoso-hermann-493048218/'], ['quim.png', 'Quim Camargo', 'Co-President', 'quim-camargo']]],
-    ['Social', '#3f8a48', [['bia.png', 'Beatriz Bogado', 'Social Director', 'beatriz-martinho-bogado-6263b832b/'], ['gui.png', 'Guilherme Regis', 'Social Manager', 'guilherme-nolasco-regis/'], ['dani.png', 'Danielle Tavares', 'Social Manager', 'daniellecltavares/']]],
-    ['Marketing', '#f6cd3d', [['bella.png', 'Bella Miller', 'Marketing Director', 'bellamiller1/'], ['lari.png', 'Larissa Oliveira', 'Marketing Manager', 'larissa-oliveira2005/'], ['guid.png', 'Guilherme Dias', 'Marketing Manager', 'guilherme-souza-dias-4701b8343/']]],
-    ['Finance', '#0b57b8', [['mc.png', 'Maria Clara Quiroga', 'Finance Director', 'mariaclaraquiroga/'], ['ranna.png', 'Ranna Mehta', 'Finance Manager', 'ranna-mehta-6ba794278/'], ['enzo.png', 'Enzo Ortega', 'Finance Manager', 'enzo-b-ortega-1087681a5/']]],
-    ['Professional', '#3f8a48', [['lucas.png', 'Lucas Piovezan', 'Professional Director', 'lucas-piovezan'], ['alice.png', 'Alice Marimon', 'Professional Manager', 'alice-marimon-8433a9385/']]]
+    ['Presidents', '#0b57b8', [['lucas.png', 'Lucas Piovezan', 'Co-President', 'lucas-piovezan'], ['bia.png', 'Beatriz Bogado', 'Co-President', 'beatriz-martinho-bogado-6263b832b/']]],
+    ['Social', '#3f8a48', [['gui-2026.png', 'Guilherme Regis', 'Social Co-Director', 'guilherme-nolasco-regis/'], ['dani.png', 'Danielle Tavares', 'Social Co-Director', 'daniellecltavares/'], ['', 'Maria Luiza Duarte', 'Social Manager', '']]],
+    ['Marketing', '#f6cd3d', [['lari.png', 'Larissa Oliveira', 'Marketing Director', 'larissa-oliveira2005/'], ['', 'Letícia Alban', 'Marketing Manager', '']]],
+    ['Finance', '#0b57b8', [['quim-2026.png', 'Quim Camargo', 'Finance Director', 'quim-camargo'], ['enzo-2026.png', 'Enzo Ortega', 'Finance Manager', 'enzo-b-ortega-1087681a5/']]],
+    ['Professional', '#3f8a48', [['guid.png', 'Guilherme Dias', 'Professional Director', 'guilherme-souza-dias-4701b8343/'], ['mariacarolina.png', 'Maria Carolina Lima', 'Professional Manager', '']]]
   ];
 
   var resources = [
@@ -460,9 +462,13 @@ footer{margin-top:auto;background:var(--ink);color:var(--paper)}
       '<div class="dept-name"><span class="dot" style="background:' + d[1] + '"></span><h2>' + esc(d[0]) + '</h2></div>' +
       '<div class="members">' + d[2].map(function (m) {
         var rot = ROTS[k++ % ROTS.length] * 0.8;
-        return '<a class="member" href="' + LI + m[3] + '" target="_blank" rel="noopener">' +
-          '<div class="pol" style="transform:rotate(' + rot + 'deg)"><img src="' + m[0] + '" alt="' + esc(m[1]) + '" loading="lazy"></div>' +
-          '<div class="member-info"><strong>' + esc(m[1]) + '</strong><span class="mono">' + esc(m[2]) + '</span></div></a>';
+        var tag = m[3] ? 'a' : 'div';
+        var attrs = m[3] ? ' href="' + LI + m[3] + '" target="_blank" rel="noopener"' : '';
+        var initials = m[1].split(' ').map(function (w) { return w[0]; }).filter(function (c, i, a) { return i === 0 || i === a.length - 1; }).join('');
+        var pic = m[0] ? '<img src="' + m[0] + '" alt="' + esc(m[1]) + '" loading="lazy">' : '<div class="ph" aria-hidden="true">' + esc(initials) + '</div>';
+        return '<' + tag + ' class="member"' + attrs + '>' +
+          '<div class="pol" style="transform:rotate(' + rot + 'deg)">' + pic + '</div>' +
+          '<div class="member-info"><strong>' + esc(m[1]) + '</strong><span class="mono">' + esc(m[2]) + '</span></div></' + tag + '>';
       }).join('') + '</div></div>';
   }).join('');
 
