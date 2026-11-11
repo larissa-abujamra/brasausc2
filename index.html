@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BRASA USC - Brazilian Student Association</title>
-<meta name="description" content="BRASA USC — conectando e empoderando estudantes brasileiros em Los Angeles.">
+<meta name="description" content="BRASA USC: conectando e empoderando estudantes brasileiros em Los Angeles.">
 <link rel="icon" href="brasalogo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,6 +52,20 @@ header{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1p
 .nav-link.active{border-bottom-color:var(--blue)}
 .nav-cta{background:var(--blue);color:#fff;padding:12px 22px;border-radius:999px;letter-spacing:0;font-size:15px}
 .nav-cta:hover{color:#fff}
+.menu-toggle{display:none;width:44px;height:44px;border:1.5px solid var(--ink);border-radius:999px;background:transparent;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:0}
+.menu-toggle span{display:block;width:18px;height:2px;background:var(--ink);border-radius:2px;transition:transform .3s var(--ease),opacity .2s}
+header.open .menu-toggle span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+header.open .menu-toggle span:nth-child(2){opacity:0}
+header.open .menu-toggle span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+@media (max-width:820px){
+  .nav{flex-wrap:nowrap;padding-top:12px;padding-bottom:12px}
+  .menu-toggle{display:flex}
+  .nav nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--white);border-bottom:1.5px solid var(--ink);flex-direction:column;align-items:stretch;gap:0;padding:8px var(--gutter) 20px;font-size:16px}
+  header.open .nav nav{display:flex}
+  .nav nav .nav-link{padding:16px 0;border-bottom:1px solid rgba(15,26,46,.1)}
+  .nav nav .nav-link.active{color:var(--blue);border-bottom-color:rgba(15,26,46,.1)}
+  .nav nav .nav-cta{margin-top:16px;text-align:center;padding:14px 22px;font-size:16px}
+}
 
 /* Hero */
 .hero{position:relative;overflow:hidden;height:clamp(640px,88vh,880px)}
@@ -191,6 +205,9 @@ footer{margin-top:auto;background:var(--ink);color:var(--paper)}
 .foot-bottom .flag span{width:20px;height:3px}
 
 @media (max-width:640px){
+  .hero{height:auto;padding-bottom:230px}
+  .hero-inner{padding-top:40px}
+  .hero canvas{height:220px}
   .ev-row{grid-template-columns:1fr 110px;grid-template-areas:"date pic" "text text";row-gap:14px}
   .ev-date{grid-area:date}.ev-row .polaroid{grid-area:pic}.ev-text{grid-area:text}
   .dept{grid-template-columns:1fr}
@@ -210,7 +227,8 @@ footer{margin-top:auto;background:var(--ink);color:var(--paper)}
   <header>
     <div class="nav">
       <a href="#home" class="brand" data-go="home"><img src="brasalogo.png" alt="BRASA USC">BRASA USC</a>
-      <nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button>
+      <nav id="mainNav">
         <a href="#sobre" class="nav-link" data-go="sobre">SOBRE NÓS</a>
         <a href="#eventos" class="nav-link" data-go="eventos">EVENTOS</a>
         <a href="#recursos" class="nav-link" data-go="recursos">MEMBER RESOURCES</a>
@@ -224,7 +242,7 @@ footer{margin-top:auto;background:var(--ink);color:var(--paper)}
     <section class="hero">
       <div class="hero-inner">
         <h1><span class="outline">BRASA</span> <span style="color:var(--blue)">USC</span></h1>
-        <p>Uma das 100+ BRASAs pelo mundo — conectando e empoderando estudantes brasileiros em Los Angeles.</p>
+        <p>Uma das 100+ BRASAs pelo mundo, conectando e empoderando estudantes brasileiros em Los Angeles.</p>
         <div class="hero-ctas">
           <a href="https://engage.usc.edu/BrazilianStudentAssociation/" target="_blank" rel="noopener" class="btn" style="background:var(--ink);color:#fff">Join BRASA</a>
           <a href="#eventos" data-go="eventos" class="btn btn-outline">Ver eventos</a>
@@ -360,9 +378,9 @@ footer{margin-top:auto;background:var(--ink);color:var(--paper)}
   var stripSrc = ['natal.png', 'prebaile.png', 'churras.png', 'guichloe.png', 'retiro.png', 'tailgate.png', 'trio.png', 'wine.png', 'girls.png', 'meninos.png', 'churra.png'];
 
   var offers = [
-    { title: 'Eventos', desc: 'A área de Social organiza eventos que fortalecem a união entre brasileiros e criam momentos de integração — Tailgates, Mixers, Churrascos e o Retiro BRASA.', fill: '#3f8a48', ink: '#ffffff' },
+    { title: 'Eventos', desc: 'A área de Social organiza eventos que fortalecem a união entre brasileiros e criam momentos de integração: Tailgates, Mixers, Churrascos e o Retiro BRASA.', fill: '#3f8a48', ink: '#ffffff' },
     { title: 'Profissional', desc: 'Conectamos nossos membros a oportunidades de desenvolvimento profissional por meio de parcerias com empresas, organizações e alumni.', fill: '#0b57b8', ink: '#ffffff' },
-    { title: 'Comunidade', desc: 'Celebramos nossa cultura e identidade brasileira no exterior, com atividades de inclusão, trocas culturais e bem-estar — um verdadeiro home away from home.', fill: '#f6cd3d', ink: '#0f1a2e' }
+    { title: 'Comunidade', desc: 'Celebramos nossa cultura e identidade brasileira no exterior, com atividades de inclusão, trocas culturais e bem-estar, um verdadeiro home away from home.', fill: '#f6cd3d', ink: '#0f1a2e' }
   ];
 
   var logos = [['gold.png', 'Goldman Sachs'], ['amazon.png', 'Amazon'], ['citi.png', 'Citi'], ['brex.png', 'Brex'], ['hsbc.png', 'HSBC'], ['jp.png', 'J.P. Morgan']];
@@ -378,7 +396,7 @@ footer{margin-top:auto;background:var(--ink);color:var(--paper)}
       ['25 JAN', 'headshots.png', 'Professional Headshots', 'Sua nova foto de perfil pro LinkedIn'],
       ['01 FEB', 'churras.png', 'Churrasco de Boas-Vindas', 'Picanha, pão de alho e pessoal da BRASA = alegria'],
       ['27 FEB', 'churra.png', 'Churrasco BRASA', 'Edição “cura ressaca” Baile Brasil'],
-      ['04 MAR', 'crebit.png', 'Evento CREBIT — Professional', 'Conheça os fundadores de uma fintech de transferência de câmbio'],
+      ['04 MAR', 'crebit.png', 'Evento CREBIT: Professional', 'Conheça os fundadores de uma fintech de transferência de câmbio'],
       ['17–19 APR', 'retiro.png', 'Retiro da BRASA', 'A viagem mais esperada do ano!'],
       ['20 APR', 'networking.jpg', 'Senior Networking Panel', 'Bate-papo com os incríveis seniors da BRASA']
     ],
@@ -396,7 +414,7 @@ footer{margin-top:auto;background:var(--ink);color:var(--paper)}
   };
 
   var LI = 'https://www.linkedin.com/in/';
-  // [foto, nome, cargo, slug do LinkedIn] — foto ou slug vazios ('') mostram placeholder / sem link
+  // [foto, nome, cargo, slug do LinkedIn]. Foto ou slug vazios ('') mostram placeholder / sem link
   var board = [
     ['Presidents', '#0b57b8', [['lucas.png', 'Lucas Piovezan', 'Co-President', 'lucas-piovezan'], ['bia.png', 'Beatriz Bogado', 'Co-President', 'beatriz-martinho-bogado-6263b832b/']]],
     ['Social', '#3f8a48', [['gui-2026.png', 'Guilherme Regis', 'Social Co-Director', 'guilherme-nolasco-regis/'], ['dani-2026.png', 'Danielle Tavares', 'Social Co-Director', 'daniellecltavares/'], ['mariluiza.png', 'Maria Luiza Duarte', 'Social Manager', '']]],
@@ -406,7 +424,7 @@ footer{margin-top:auto;background:var(--ink);color:var(--paper)}
   ];
 
   // Conteúdo dos Member Resources, criptografado com a senha (gerado por tools/encrypt-resources.mjs).
-  var RESOURCES_BLOB = {"iter":600000,"salt":"vVuopkta4P9Friep3xVRiQ==","iv":"UTwpgZ/BChG4kg6S","ct":"75PI1rH176xKJFMGT+uffAYTq4LV8OMl3SVzfzaV/CqR1rBgq5GQSkRPrI3EYk7siZAr52yQG/Hpp6XeQ8UJBw9gFIFd7Rk2T4fM52AjJvjNspSB31WRFMX+rOHRV2KLw8AaiJJN6gJstWz1vepvwJS+ckcgFjMnrpmQTeQryA0J5EBAiowtqtl/3m9Ln6fim+P0SDQoZSF3cYf68HyxRUGVM6NOiJWhFlgZaSelYljPCgWOnB5fOZikW1pMiMt4SgJy93JdyTYxQ3e2aQjnm3zC5SLKVyV4D7cmHiNcGeucX+A0/gWZnsFqnnaCilMxDxnEQ8NuJWQJxhInT6F2cDCLohVyNlT7rkDqBizytodNYsGvbhkV10uZ6rWxRXxIQFRBayJtHllJ3qTTYFiTD1GXu2HLps3s4p9q3IbXp/z7rUANyQTA6KRCl1LeveYt8Jl0nBQYRdyyipOwYWXZ1udJwTlH+rCRPWnsujheSx01D7tgZO3ZD3B+pNs+Qyr5//wR58uhgdb6yt5V+KTEw9xHev9NRh23DGr/Hg42/EcDxHlbGTVlJAzM88Bdt8TB+CLs/rkaxOGu6gIzLmJmT1b3WoSKToygfEyIvSfgMskuEjmcV7eP3KT5qXaFK2GHVbmMbzVDQot8wIRri3Zwx2P+zVInhoDOM59yEEjkGtpep9ekfkh4CfuxOw+KwVLb2p89y9F4bapynrOSD0I3yq8s10kdpkiBpZf1tKicDxQJEnCxWMRa78gEAEJl7uxDI0fMtE9u2hkdeOXNyvgiuhEizQ4pKHgQ29nx9YKF9JuTgPTDD8Z2Y69rF73zEziB737pguqzFaVYO/JaDGLzy2IfiFI6sji8EUmOulWZ6rCBYwf0/rnHOKMdjnPTdSKdHBAPOe+hH8yZfCCPl0tUudIlbe+UmaFm4fr7R6L76Ai3h3S+PiItrCpkBQ0yQL36eqks7fltrQgBO641CGFMRlLb+S72zk4iRghbZ68o1sASjUG1cVo5C8U8u/mHtacaS1J60bcv5qU8dIIX2Blm7piZXOg3f8WzGPNdCaPuXijv5JtSbzS8MUnx8c/pQw4tPlolMAQeSf8r4tYfMYDOtq+yabqC+kCyAFbxkJ9UHP8PI9jhhwwKtrDmqmHUqUt7cwbr+xuz4c0F5DPCyUMbYCeQ1P4WWADu5u4+Sob8kWwhhaEEBERsEmSt7jFMoYO2RWLqohHYuPA0qMAaHoOD0y0fmG568DOS/Nhr8kmCSS9tNxa4IZsGtlZTd2c+oRhgG2W3K81S2t7gs9ZiwEgEl67yp3lUVWGkbaPIPYuNo7bFyVHfsM5WSryvlbR1B3uERMwIeSBRosCoLw85dFJPoMELg7qMytJf+zpApKBYcl7Mg7hS9TgUB7BlWfqhmq8NMm9U8g=="};
+  var RESOURCES_BLOB = {"iter":600000,"salt":"5jEdHANlCTTVvJbvE9xyQA==","iv":"FY8Sd7JSB7Fd1mxp","ct":"OglgH3HYzB0T6nMK/fAmzvhSEexGFNESZnj5nuulX1D717eGpv49k16cQdnVADR9VruKBh8rTFoKWO5Y1hJjUrvvf4S2p1U1wpkyq5W7okTVEbr92tW120UjhypLNsRky5J0bM6mq3utK4ATbxOADruawsr45vfHagrRRnIuG4zk8eiwgy3WcZzLjvsOHOX2J3g4K2DfilWF0Yg5so1R/chiMnXXYKAkkJz3e7ESfDObuSuMqLRPzQO7Un0yYuYyaIeoZoGK8PfpmX3jLrRw2o2indJZqgcNOIO5pI7u6wOtfksSMFIYQuiWgwKLXVeWGrmXSJX4CLk41pf76C78PIPNZNOmEYIXnfvhrBYD0WuuvjovegM3KyhCYvWVMhr3ec9i7LYTtD6qlY9h+RL2PYcdHl5dzOJHk7tjiledfI7CeIaDzIrQjf6SOkMpWTS+Hd7jWsgA9EF83btrz4kSpKSjpBW0x0lltvr/y5oluFLOAhc8WZvfd5vJPlCYOahOUABngEbEBvtG32xdZGXmUEjFdqkQDA9wlry2PCSoTFZ7gHZUhoJCa+7w0cCVbugMRmH8FUXV2sLicbHisSkyci4v5LhU3HXymDa8nClEAGsaIUSNHkadBYyygIIjNtsUPgAeXqZpd61l1wmq4n0tQC4JxAZK6kdNYmuTCBfzdrgUuurCV0bbpZr/wUEjm/3RuhwRzd+Ycou4G+WgC7CPsXZQnip75wK8U9ZPernvUFww1s7bETb0zmXEmx4UDh9fOSSIDE3ESH/PL8q1ZqkWwWzvNDkwseweq0o2uoPaUbX9SjXqyO4n3y6jtjkTfZvn7Loz+QZxR1NMhuM+U8K6XNg9K1aw1vfJUvd0ywzPfwaGNRVhrgXEtAutSoAm0llGLI+m4y91ogLBF//0kNEFgfYDcOweTzTh0BdsrOyp8GN23+SvzP3+3Jr7fkUQRdzkf4cBBm5RoBXMag1DyVpubydSdnIwuDE4Rz3bVSkpI5vXsiLkecPF9CoJ5nvXy9AO4H++8RT0Gzvr6A6M8vMzH6d8OEZisu4rmreIxLbu5X6tlsmpC+4oT99cYCbrTCVlvHPmE3mYDn6Y6is75aG6d3RC6vGT49iBgJZX3E24fDhBlQeBv8NPDRyZ/tpNhOzt7YcgJA4HhhFJfUbb29N5OfdDMvmlHFn5W3qsM5VkHEXwgJYYhTgNZFos9NYpno6i1xl7CaeIeN2cHL1g+pluZgC72Syxfgi9YJopX4XFRxKaG03ZxaoAQuRBB1TgeL7+I8tA82C3Z3HSwLsqibmZJkU7/HLIjx8Wl62xOR6err+m3JrSwagX48kJ29LRKZDoM9yPa7ZWvEO+/tUnSd13vtYMVuM/QqZ9xyUZlDtU2KUkGY9oB2lpoU9553J56+dJeQ=="};
 
   /* ---------- Render ---------- */
   $('strip').innerHTML = stripSrc.concat(stripSrc).map(function (src) {
@@ -479,6 +497,16 @@ footer{margin-top:auto;background:var(--ink);color:var(--paper)}
     if (page === 'home') startCrowd(); else stopCrowd();
     if (scroll) window.scrollTo({ top: 0 });
   }
+  var header = document.querySelector('header'), toggle = $('menuToggle');
+  function setMenu(open) {
+    header.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+    toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+  }
+  toggle.addEventListener('click', function () { setMenu(!header.classList.contains('open')); });
+  document.querySelectorAll('#mainNav a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+  document.addEventListener('click', function (e) { if (!header.contains(e.target)) setMenu(false); });
   window.addEventListener('hashchange', function () { show(location.hash.slice(1), true); });
   document.querySelectorAll('[data-go]').forEach(function (a) {
     a.addEventListener('click', function (e) {
